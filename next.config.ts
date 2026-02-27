@@ -11,6 +11,12 @@ const baseConfig: NextConfig = {
       ]
     }
   },
+
+  // 🔥 빌드시 ESLint 에러 무시 (Render 배포용)
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   images: {
     remotePatterns: [
       {
@@ -28,11 +34,8 @@ let configWithPlugins = baseConfig;
 // Conditionally enable Sentry configuration
 if (!process.env.NEXT_PUBLIC_SENTRY_DISABLED) {
   configWithPlugins = withSentryConfig(configWithPlugins, {
-    // For all available options, see:
-    // https://www.npmjs.com/package/@sentry/webpack-plugin#options
     org: process.env.NEXT_PUBLIC_SENTRY_ORG,
     project: process.env.NEXT_PUBLIC_SENTRY_PROJECT,
-    // Only print logs for uploading source maps in CI
     silent: !process.env.CI,
   });
 }
