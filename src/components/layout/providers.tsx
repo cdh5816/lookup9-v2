@@ -31,9 +31,7 @@ export default function Providers({
               footerActionLink: 'text-primary hover:text-primary/90',
               formFieldLabelRow: 'text-muted-foreground'
             },
-            signIn: {
-              terms: 'Your terms of service and privacy policy'
-            }
+          
           }}
           publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
         >
